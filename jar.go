@@ -12,8 +12,9 @@ package cookiejar
 import (
 	"errors"
 	"fmt"
+	"golang.org/x/net/publicsuffix"
+	"gopkg.in/errgo.v1"
 	"net"
-	"net/http"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -23,8 +24,7 @@ import (
 	"sync"
 	"time"
 
-	"golang.org/x/net/publicsuffix"
-	"gopkg.in/errgo.v1"
+	http "github.com/Danny-Dasilva/fhttp"
 )
 
 // PublicSuffixList provides the public suffix of a domain. For example:
