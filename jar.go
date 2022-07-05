@@ -299,8 +299,18 @@ func (j *Jar) cookies(u *url.URL, now time.Time) (cookies []*http.Cookie) {
 	}
 
 	sort.Sort(byPathLength(selected))
-	for _, e := range selected {
-		cookies = append(cookies, &http.Cookie{Name: e.Name, Value: e.Value})
+	for i, e := range selected {
+		//cookies = append(cookies, &http.Cookie{Name: e.Name, Value: e.Value})
+		fmt.Println(e)
+		cookies[i] = &http.Cookie{
+			Name:     e.Name,
+			Value:    e.Value,
+			Path:     e.Path,
+			Domain:   e.Domain,
+			Expires:  e.Expires,
+			Secure:   e.Secure,
+			HttpOnly: e.HttpOnly,
+		}
 	}
 
 	return cookies
